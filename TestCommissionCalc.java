@@ -44,9 +44,21 @@ public class TestCommissionCalc {
 	public void tearDown() throws Exception {
 	}
 
+	/* test calculateCommission function for probationary employee.
+	 * 
+	 */
+	@Test
+	public void testCalculateComission() {
+		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		assertEquals(0.0, person.calculateCommission(), 0.01);
+		
+	}
+	
+	/*
 	@Test
 	public void test() {
 		fail("Not yet implemented");
 	}
+	*/
 
 }
