@@ -48,7 +48,7 @@ public class TestCommissionCalc {
 	 * 
 	 */
 	@Test
-	public void testCalculateComissionProbationary() {
+	public void testCalculateCommissionProbationary() {
 		CommissionCalculator person = new CommissionCalculator("Bob", 0);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
@@ -57,12 +57,19 @@ public class TestCommissionCalc {
 	 * 
 	 */
 	@Test
-	public void testCalculateComissionExperienced() {
+	public void testCalculateCommissionExperienced() {
 		CommissionCalculator person = new CommissionCalculator("Bob", 1);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 	
-	
+	/* test calculateCommission function for experienced employee.
+	 * 
+	 */
+	@Test
+	public void testCalculateCommissionNull() {
+		CommissionCalculator person = new CommissionCalculator("Bob", 3);
+		assertEquals(0.0, person.calculateCommission(), 0.01);
+	}
 
 	@Test
 	public void test() {
