@@ -174,9 +174,7 @@ public class CommissionCalculator implements iCommissionCalculator {
 			} else if ((netSales + s.getTransactionAmount()) >= minimumSalesForBonusCommission) {
 				// We need to determine how much of this sale qualifies for
 				// commission.
-				double commissionableAmount = (netSales + s
-						.getTransactionAmount())
-						- minimumSalesForBonusCommission;
+				double commissionableAmount = (netSales + s.getTransactionAmount())- minimumSalesForBonusCommission;
 				
 				bonusCommission += commissionableAmount * bonusCommissionRate;
 			} else {

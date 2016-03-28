@@ -50,7 +50,7 @@ public class TestCommissionCalc {
 	@Test
 	public void testCalculateCommissionProbationary() {
 		try {
-			SalesTransaction s = new SalesTransaction(1, 0.00);
+			SalesTransaction s = new SalesTransaction(1, 100.00);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +65,7 @@ public class TestCommissionCalc {
 	@Test
 	public void testCalculateCommissionExperienced() {
 		try {
-			SalesTransaction s = new SalesTransaction(1, 0.00);
+			SalesTransaction s = new SalesTransaction(1, 5000.00);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,6 +134,48 @@ public class TestCommissionCalc {
 		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
 	}
 	
+	/* test calculateCommission function probationary employee.
+	 * advanced cases need to test that minum sales have been made to meet commission requirements.
+	 */
+	@Test
+	public void testCalculateCommissionProbation() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 5000.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CommissionCalculator person = new CommissionCalculator("Bob", 1);
+		assertEquals(0.0, person.calculateCommission(), 0.01);
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void testInvalidTransactionType() {
+		boolean flag = false;
+		try {
+			SalesTransaction s = new SalesTransaction(4, 5000.00);
+		} catch (Exception e) {
+			flag = true;
+		}
+			assertTrue(flag);
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void testInvalidTransactionAmount() {
+		boolean flag = false;
+		try {
+			SalesTransaction s = new SalesTransaction(2, -5000.00);
+		} catch (Exception e) {
+			flag = true;
+		}
+		assertTrue(flag);
+	}
 	/*
 	@Test
 	public void test() {
