@@ -49,6 +49,12 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateCommissionProbationary() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 0.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 0);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
@@ -58,23 +64,82 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateCommissionExperienced() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 0.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 1);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 	
-	/* test calculateCommission function for experienced employee.
+	/* test calculateCommission function for employee.
 	 * 
 	 */
 	@Test
 	public void testCalculateCommissionNull() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 0.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 3);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 
+	/* test calculateBonusCommission function for probationary employee.
+	 * 
+	 */
+	@Test
+	public void testCalculateBonusCommissionProbationary() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 0.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
+	}
+	
+	/* test calculateBonusCommission function for experienced employee.
+	 * 
+	 */
+	@Test
+	public void testCalculateBonusCommissionExperienced() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 0.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CommissionCalculator person = new CommissionCalculator("Bob", 1);
+		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
+	}
+
+	/* test calculateBonusCommission function for null employee.
+	 * 
+	 */
+	@Test
+	public void testCalculateBonusCommissionNull() {
+		try {
+			SalesTransaction s = new SalesTransaction(1, 0.00);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CommissionCalculator person = new CommissionCalculator("Bob", 3);
+		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
+	}
+	
+	/*
 	@Test
 	public void test() {
 		fail("Not yet implemented");
 	}
+	*/
 
 
 }
