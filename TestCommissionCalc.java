@@ -55,6 +55,18 @@ public class TestCommissionCalc {
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 	
+	/* test calculateCommission function for probationary employee.
+	 * Should already have met minimum requirement for probation.
+	 */
+	@Test
+	public void testCalculateCommissionProbationaryAlreadyMetMinimum() {
+		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
+		assertEquals(0.0, person.calculateCommission(), 0.01);
+	}
+	
 	/* test calculateCommission function for experienced employee.
 	 * 
 	 */
@@ -89,6 +101,7 @@ public class TestCommissionCalc {
 	@Test
 	public void testCalculateBonusCommissionProbationary() {
 		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		person.addSale(0, 1000);
 		person.addSale(0, 1000);
 		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
@@ -142,7 +155,8 @@ public class TestCommissionCalc {
 	}
 	
 	/*
-	 * 
+	 *  Test that the salesTransaction() constructor throws an exception upon receiving an invalid amount.
+	 *  
 	 */
 	@Test
 	public void testInvalidTransactionAmount() {
@@ -152,7 +166,8 @@ public class TestCommissionCalc {
 		} catch (Exception e) {
 			flag = true;
 		}
-		assertTrue(flag);
+		if(!flag) fail();
+		assertTrue(flag); // expecting thrown exception
 	}
 	
 	/* test getTotalSales() function.
