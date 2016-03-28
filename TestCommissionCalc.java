@@ -49,13 +49,9 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateCommissionProbationary() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 100.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 	
@@ -64,13 +60,9 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateCommissionExperienced() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 5000.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 1);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 	
@@ -79,14 +71,16 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateCommissionNull() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 0.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 3);
-		assertEquals(0.0, person.calculateCommission(), 0.01);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
+		boolean flag = false;
+		try {
+			SalesTransaction s = new SalesTransaction(4, 5000.00);
+		} catch (Exception e) {
+			flag = true;
+		}
+			assertTrue(flag);
 	}
 
 	/* test calculateBonusCommission function for probationary employee.
@@ -94,13 +88,9 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateBonusCommissionProbationary() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 0.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
 	}
 	
@@ -109,13 +99,9 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateBonusCommissionExperienced() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 0.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 1);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
 	}
 
@@ -124,13 +110,9 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateBonusCommissionNull() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 0.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 3);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateBonusCommission(), 0.01);
 	}
 	
@@ -139,13 +121,9 @@ public class TestCommissionCalc {
 	 */
 	@Test
 	public void testCalculateCommissionProbation() {
-		try {
-			SalesTransaction s = new SalesTransaction(1, 5000.00);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		CommissionCalculator person = new CommissionCalculator("Bob", 1);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
 		assertEquals(0.0, person.calculateCommission(), 0.01);
 	}
 	
@@ -176,6 +154,27 @@ public class TestCommissionCalc {
 		}
 		assertTrue(flag);
 	}
+	
+	/* test getTotalSales() function.
+	 * 
+	 */
+	@Test
+	public void testGetTotalSales() {
+		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		person.addSale(0, 1000);
+		person.addSale(0, 1000);
+		assertEquals(2000.00, person.getTotalSales(), 0.01);
+	}
+	
+	/* test getName() function for employee.
+	 * 
+	 */
+	@Test
+	public void testGetName() {
+		CommissionCalculator person = new CommissionCalculator("Bob", 0);
+		assertEquals("Bob", person.getName());
+	}
+	
 	/*
 	@Test
 	public void test() {
